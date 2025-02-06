@@ -76,14 +76,14 @@ class ZepChatMessageHistory(BaseChatMessageHistory):
         api_key: Optional[str] = None,
     ) -> None:
         try:
-            from zep_python import ZepClient
+            from zep_python.client import AsyncZep
         except ImportError:
             raise ImportError(
                 "Could not import zep-python package. "
                 "Please install it with `pip install zep-python`."
             )
 
-        self.zep_client = ZepClient(base_url=url, api_key=api_key)
+        self.zep_client = AsyncZep(base_url=url, api_key=api_key)
         self.session_id = session_id
 
     @property
